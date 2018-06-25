@@ -25,7 +25,7 @@ cd ..
 mkdir contigs_cog
 cd contigs_db
 
-#make a contigis database if not already done (anvi-setup-ncbi-cogs --reset -T 10)
+#make a contigis database if not already done (anvi-setup-ncbi-cogs --num-threads 6)
 
 for i in *fna
 do
