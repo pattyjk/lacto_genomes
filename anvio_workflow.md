@@ -22,34 +22,75 @@ done
 
 #generate COGs
 cd ..
-mkdir contigs_cog
 cd contigs_db
 
 #make a contigis database if not already done (anvi-setup-ncbi-cogs --num-threads 6)
 
-for i in *fna
+for i in *.db
 do
-
+anvi-run-ncbi-cogs -c $i --num-threads 8
 done
 
-#catenate genomes into a single database
+#run HMMs for singel copy genes
+cd contigs_db 
 
-anvi-gen-genomes-storage -e dbase.txt -o lacto-GENOMES.db
+for i in *.db
+do
+anvi-run-hmms -c $i -T 8
+done
 
-#pangenome analysis
+cd ..
 ```
 
-## Make a Anvio genomes database file
+## Make a Anvio genomes database file with bash and R
 ```
 #change back to root
 cd /
 
 #write absoulte files paths to a file
-ls -R1 ./home/pattyjk/Desktop/anvio_test/contigs_db |    while read l; do case $l in *:) d=${l%:};; "") d=;; *) echo "$d/$l";; esac; done > /home/pattyjk/Desktop/anvio_test/locations.txt
+ls -R1 ./home/pattyjk/Desktop/anvio_test/contigs_db |    while read l; do case $l in *:) d=${l%:};; "") d=;; *) echo "$d/$l";; esac; done > /home/pattyjk/Desktop/anvio_test/db_files.txt
 
 #fix file name
-sed -i 's/\.\//\//g' /home/pattyjk/Desktop/anvio_test/locations.txt
+sed -i 's/\.\//\//g' /home/pattyjk/Desktop/anvio_test/db_files.txt
 
 #change back to folder 
 cd /home/pattyjk/Desktop/anvio_test
+
+#make a genomes name file and fix it up
+sed 's/\///g' db_files.txt > gen_names.txt
+sed -i 's/homepattyjkDesktopanvio_testcontigs_//g' gen_names.txt
+sed -i 's/\.//g' gen_names.txt
+sed -i 's/fnadb//g' gen_names.txt
+
+#open R to generate database
+R
+
+#read in file locations
+anvi_gen<-read.delim('db_files.txt', header=F)
+names(anvi_gen)<-'contigs_db_path'
+
+#read in genome names
+anvi_names<-read.delim('gen_names.txt', header=F)
+names(anvi_names)<-'name'
+
+#catenate
+anvi_gen<-cbind(anvi_names, anvi_gen)
+
+#write file
+write.table(anvi_gen, 'anvi_gen.txt', quote=F, row.names=F, sep='\t')
+
+#exit R
+quit()
+```
+
+
+## Catenate genomes into a single database
+```
+anvi-gen-genomes-storage -e anvi_gen.txt -o lacto-GENOMES.db
+
+#pangenome analysis
+anvi-pan-genome -g lacto-GENOMES.db -n lacto
+
+#view analysis
+anvi-display-pan -g lacto-GENOMES.db -p lacto/lacto-PAN.db
 ```
