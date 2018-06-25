@@ -1,25 +1,55 @@
-## Anvi'o pangenome worflow
+## Anvi'o pangenome worflow (v. 4)
 ```
 #load anvio with Anaconda
 source activate anvio4
 
+#fix fasta files to be compatible with Anvio
 
-#fix fasta file headers
-anvi-script-reformat-fasta 2501651209.fna -o 2501651209_f.fna --simplify-names --report-file=2501651209_rep
-
-anvi-script-reformat-fasta 2502171170.fna -o 2502171170_f.fna --simplify-names --report-file=2502171170_rep
-
+for i in *.fna
+do
+    anvi-script-reformat-fasta $i -o fixed_fasta/$i --simplify-names --report-file=fixed_reps/$i
+done
 
 #make contigs database for each genome
-anvi-gen-contigs-database -f 2501651209_f.fna -o 2501651209_contig.db -n 'Lacto'
 
-anvi-gen-contigs-database -f 2502171170_f.fna -o 2502171170_contig.db -n 'Lacto'
+mkdir contigs_db
+cd fixed_fasta
+
+for i in *.fna
+do
+    anvi-gen-contigs-database -f $i -o /home/pattyjk/Desktop/anvio_test/contigs_db/$i.db -n 'Lacto'
+done
 
 #generate COGs
+cd ..
+mkdir contigs_cog
+cd contigs_db
 
+#make a contigis database if not already done (anvi-setup-ncbi-cogs --reset -T 10)
+
+for i in *fna
+do
+
+done
 
 #catenate genomes into a single database
+
 anvi-gen-genomes-storage -e dbase.txt -o lacto-GENOMES.db
 
 #pangenome analysis
+```
+
+## Make a Anvio genomes database file
+```
+#change back to root
+cd /
+
+#write absoulte files paths to a file
+ls -R1 ./home/pattyjk/Desktop/anvio_test/contigs_db |    while read l; do case $l in *:) d=${l%:};; "") d=;; *) echo "$d/$l";; esac; done > /home/pattyjk/Desktop/anvio_test/locations.txt
+
+#fix file name
+sed -i 's/\.\//\//g' /home/pattyjk/Desktop/anvio_test/locations.txt
+
+#change back to folder 
+cd /home/pattyjk/Desktop/anvio_test
 ```
