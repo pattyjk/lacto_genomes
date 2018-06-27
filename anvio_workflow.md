@@ -38,7 +38,7 @@ cd fixed_fasta
 
 for i in *.fna
 do
-    anvi-gen-contigs-database -f $i -o /home/pattyjk/Desktop/lacto_genomes/[group_folder]/contigs_db/$i.db -n 'Lacto'
+    anvi-gen-contigs-database -f $i -o /home/pattyjk/Desktop/lacto_genomes/[group_folder]/contigs_db/$i.db -n '[group_name]'
 done
 
 #generate COGs
@@ -68,17 +68,17 @@ cd ..
 cd /
 
 #write absoulte files paths to a file
-ls -R1 ./home/pattyjk/Desktop/anvio_test/contigs_db |    while read l; do case $l in *:) d=${l%:};; "") d=;; *) echo "$d/$l";; esac; done > /home/pattyjk/Desktop/anvio_test/db_files.txt
+ls -R1 ./home/pattyjk/Desktop/lacto_genomes/[group_folder]/contigs_db |    while read l; do case $l in *:) d=${l%:};; "") d=;; *) echo "$d/$l";; esac; done > /home/pattyjk/Desktop/lacto_genomes/[group_folder]/db_files.txt
 
 #fix file name
-sed -i 's/\.\//\//g' /home/pattyjk/Desktop/anvio_test/db_files.txt
+sed -i 's/\.\//\//g' /home/pattyjk/Desktop/lacto_genomes/[group_folder]/db_files.txt
 
 #change back to folder 
-cd /home/pattyjk/Desktop/anvio_test
+cd /home/pattyjk/Desktop/lacto_genomes/[group_folder]
 
 #make a genomes name file and fix it up
 sed 's/\///g' db_files.txt > gen_names.txt
-sed -i 's/homepattyjkDesktopanvio_testcontigs_//g' gen_names.txt
+sed -i 's/homepattyjkDesktoplacto_genomesleucono_genomescontigs_//g' gen_names.txt
 sed -i 's/\.//g' gen_names.txt
 sed -i 's/fnadb//g' gen_names.txt
 
@@ -106,11 +106,11 @@ quit()
 
 ## Catenate genomes into a single database
 ```
-anvi-gen-genomes-storage -e anvi_gen.txt -o lacto-GENOMES.db
+anvi-gen-genomes-storage -e anvi_gen.txt -o [group]-GENOMES.db
 
 #pangenome analysis
-anvi-pan-genome -g lacto-GENOMES.db -n lacto
+anvi-pan-genome -g [group]-GENOMES.db -n [group_name]
 
 #view analysis
-anvi-display-pan -g lacto-GENOMES.db -p lacto/lacto-PAN.db
+anvi-display-pan -g [group]-GENOMES.db -p [group]/[group]-PAN.db
 ```
