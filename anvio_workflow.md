@@ -1,23 +1,44 @@
+## Preparng files for Anvio
+```
+#in each folder wtih genomes of interest perform these scripts
+#extract all the files
+ls *tar.gz | xargs -n1 tar -xzf
+
+#you can move the files to another place, or delete them.
+#move is mv *.tar.gz
+#delete is rm *.tar.gz
+
+#the file of interest is [genome_name].fna, so we'll search for all .fna files
+find . -name \*.fna -exec cp {} . \;
+
+#now delet extra files
+rm *.genes.fna
+rm *.intergenic.fna
+
+#with that, the filesa are ready for anvio
+```
 ## Anvi'o pangenome worflow (v. 4)
 ```
 #load anvio with Anaconda
 source activate anvio4
 
 #fix fasta files to be compatible with Anvio
+mkdir fixed_reps
+mkdir fixed_fasta
 
+#run for loop
 for i in *.fna
 do
     anvi-script-reformat-fasta $i -o fixed_fasta/$i --simplify-names --report-file=fixed_reps/$i
 done
 
 #make contigs database for each genome
-
 mkdir contigs_db
 cd fixed_fasta
 
 for i in *.fna
 do
-    anvi-gen-contigs-database -f $i -o /home/pattyjk/Desktop/anvio_test/contigs_db/$i.db -n 'Lacto'
+    anvi-gen-contigs-database -f $i -o /home/pattyjk/Desktop/lacto_genomes/[group_folder]/contigs_db/$i.db -n 'Lacto'
 done
 
 #generate COGs
@@ -25,14 +46,13 @@ cd ..
 cd contigs_db
 
 #make a contigis database if not already done (anvi-setup-ncbi-cogs --num-threads 6)
-
 for i in *.db
 do
 anvi-run-ncbi-cogs -c $i --num-threads 8
 done
 
-#run HMMs for singel copy genes
-cd contigs_db 
+#run HMMs for single copy genes
+#cd contigs_db 
 
 for i in *.db
 do
