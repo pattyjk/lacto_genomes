@@ -92,8 +92,10 @@ n
 ## Catenate genomes into a single database
 ```
 anvi-gen-genomes-storage -e anvi_gen.txt -o rhodo-GENOMES.db
+```
 
-#pangenome analysis
+## Pangenome analysis
+```
 anvi-pan-genome -g rhodo-GENOMES.db -n rhodo
 
 #view analysis
