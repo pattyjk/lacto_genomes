@@ -1,6 +1,6 @@
 
 ## Anvi'o pangenome worflow (v. 4)
--23 Genomes from NCBI
+-23 yeast genomes from NCBI
 ```
 #load anvio with Anaconda
 source activate anvio4
@@ -61,7 +61,7 @@ cd /home/pattyjk/Desktop/rhodo_genomes
 
 #make a genomes name file and fix it up
 sed 's/\///g' db_files.txt > gen_names.txt
-sed -i 's/homepattyjkDesktoplacto_genomesleucono_genomescontigs_//g' gen_names.txt
+sed -i 's/homepattyjkDesktoprhodo_genomescontigs_db//g' gen_names.txt
 sed -i 's/\.//g' gen_names.txt
 sed -i 's/fnadb//g' gen_names.txt
 
@@ -84,16 +84,18 @@ write.table(anvi_gen, 'anvi_gen.txt', quote=F, row.names=F, sep='\t')
 
 #exit R
 quit()
+n
+
 ```
 
 
 ## Catenate genomes into a single database
 ```
-anvi-gen-genomes-storage -e anvi_gen.txt -o [group]-GENOMES.db
+anvi-gen-genomes-storage -e anvi_gen.txt -o rhodo-GENOMES.db
 
 #pangenome analysis
-anvi-pan-genome -g [group]-GENOMES.db -n [group_name]
+anvi-pan-genome -g rhodo-GENOMES.db -n rhodo
 
 #view analysis
-anvi-display-pan -g [group]-GENOMES.db -p [group]/[group]-PAN.db
+anvi-display-pan -g rhodo-GENOMES.db -p rhodo/rhodo-PAN.db
 ```
