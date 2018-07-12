@@ -96,8 +96,8 @@ anvi-gen-genomes-storage -e anvi_gen.txt -o rhodo-GENOMES.db
 
 ## Pangenome analysis
 ```
-anvi-pan-genome -g rhodo-GENOMES.db -n rhodo
-
+anvi-pan-genome -g rhodo-GENOMES.db -n rhodo --enforce-hierarchical-clustering -T 8 --min-occurrence 2
+ -T 8
 #view analysis
 anvi-display-pan -g rhodo-GENOMES.db -p rhodo/rhodo-PAN.db
 ```
