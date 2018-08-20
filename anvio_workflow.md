@@ -17,10 +17,10 @@ rm *.intergenic.fna
 
 #with that, the filesa are ready for anvio
 ```
-## Anvi'o pangenome worflow (v. 4)
+## Anvi'o pangenome worflow (v. 5)
 ```
 #load anvio with Anaconda
-source activate anvio4
+source activate anvio5
 
 #fix fasta files to be compatible with Anvio
 mkdir fixed_reps
