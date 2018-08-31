@@ -115,7 +115,7 @@ Number of partial gene calls .................: 284,255
 
 
 #pangenome analysis
-anvi-pan-genome -g lacto-GENOMES.db -n all_lacto --enforce-hierarchical-clustering -T 8 --exclude-partial-gene-calls --min-occurrence 15
+anvi-pan-genome -g lacto-GENOMES.db -n all_lacto --enforce-hierarchical-clustering -T 8 --exclude-partial-gene-calls --min-occurrence 50
 
 #view analysis
 anvi-display-pan -g lacto-GENOMES.db -p [group]/[group]-PAN.db
