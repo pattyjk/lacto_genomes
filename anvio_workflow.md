@@ -106,17 +106,17 @@ quit()
 
 ## Catenate genomes into a single database
 ```
-anvi-gen-genomes-storage -e anvi_gen.txt -o [group]-GENOMES.db
+anvi-gen-genomes-storage -e anvi_gen.txt -o lacto-GENOMES.db
 
 #pangenome analysis
-anvi-pan-genome -g [group]-GENOMES.db -n [group_name]
+anvi-pan-genome -g lacto-GENOMES.db -n all_lacto --enforce-hierarchical-clustering -T 8 --exclude-partial-gene-calls --min-occurrence 15
 
 #view analysis
-anvi-display-pan -g [group]-GENOMES.db -p [group]/[group]-PAN.db
+anvi-display-pan -g lacto-GENOMES.db -p [group]/[group]-PAN.db
 ```
 ## Calculate ANI between genomes
 ```
-anvi-compute-ani -o ANI -e anvi_gen.txt -T 8 -p pantoea/pantoea-PAN.db
+anvi-compute-ani -o all_lacto_ANI -e anvi_gen.txt -T 8 -p 
 ```
 
 ## Make genome tree
@@ -127,8 +127,11 @@ anvi-get-sequences-for-hmm-hits --external-genomes anvi_gen.txt -o concatenated_
 anvi-gen-phylogenomic-tree -f concatenated-proteins.fa -o pantoea_tree.tree
 ```
 
-## Extract 16S rRNA sequences from HMMs
+## Extract 16S rRNA gene sequences from HMMs
 ```
-anvi-get-sequences-for-hmm-hits -e anvi_gen.txt --gene-names Bacterial_16S_rRNA -o lacto_16s.fna --return-best-hit
+anvi-get-sequences-for-hmm-hits -e anvi_gen.txt --gene-names Bacterial_16S_rRNA -o lacto_16s.fna --return-best-hit --hmm-sources Rinke_et_al,Ribosomal_RNAs,Campbell_et_al
 ```
 
+## Get summary stats of genomes
+```
+anvi-script-add-default-collection -c lacto_GENOMES.db
