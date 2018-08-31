@@ -108,6 +108,12 @@ quit()
 ```
 anvi-gen-genomes-storage -e anvi_gen.txt -o lacto-GENOMES.db
 
+The new genomes storage ......................: lacto-GENOMES.db (v6, signature: hashe4d2e738)
+Number of genomes ............................: 4,520 (internal: 0, external: 4,520)
+Number of gene calls .........................: 10,360,105
+Number of partial gene calls .................: 284,255
+
+
 #pangenome analysis
 anvi-pan-genome -g lacto-GENOMES.db -n all_lacto --enforce-hierarchical-clustering -T 8 --exclude-partial-gene-calls --min-occurrence 15
 
@@ -135,3 +141,4 @@ anvi-get-sequences-for-hmm-hits -e anvi_gen.txt --gene-names Bacterial_16S_rRNA 
 ## Get summary stats of genomes
 ```
 anvi-script-add-default-collection -c lacto_GENOMES.db
+```
