@@ -114,3 +114,21 @@ anvi-pan-genome -g [group]-GENOMES.db -n [group_name]
 #view analysis
 anvi-display-pan -g [group]-GENOMES.db -p [group]/[group]-PAN.db
 ```
+## Calculate ANI between genomes
+```
+anvi-compute-ani -o ANI -e anvi_gen.txt -T 8 -p pantoea/pantoea-PAN.db
+```
+
+## Make genome tree
+```
+#generate genome tree
+anvi-get-sequences-for-hmm-hits --external-genomes anvi_gen.txt -o concatenated_lacto-proteins.fa  --gene-names Ribosomal_L2,Ribosomal_L3,Ribosomal_L4,Ribosomal_L5,Ribosomal_L6,Ribosomal_L14,Ribosomal_L16,Ribosomal_L18e,Ribosomal_L18p,Ribosomal_L22,Ribosomal_S10,Ribosomal_S17,Ribosomal_S19,Ribosomal_S3_C,Ribosomal_S8 --return-best-hit --get-aa-sequence --concatenate
+
+anvi-gen-phylogenomic-tree -f concatenated-proteins.fa -o pantoea_tree.tree
+```
+
+## Extract 16S rRNA sequences from HMMs
+```
+anvi-get-sequences-for-hmm-hits -e anvi_gen.txt --gene-names Bacterial_16S_rRNA -o lacto_16s.fna --return-best-hit
+```
+
