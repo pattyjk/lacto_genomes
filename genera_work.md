@@ -136,5 +136,28 @@ quit()
 n
 ```
 
+## Make genome storage for each genera
+```
+source activate anvio5
+#if databases are outdated, use anvi-migrate-db ./[group_folder]/*.fna.db
 
+anvi-gen-genomes-storage -e leucono_anvi_genomes.txt -o leucono-GENOMES.db
+#The new genomes storage ......................: leucono-GENOMES.db (v6, signature: hashf9b80219)
+#Number of genomes ............................: 8 (internal: 0, external: 8)
+#Number of gene calls .........................: 15,676
+#Number of partial gene calls .................: 223
+
+anvi-gen-genomes-storage -e strepto_anvi_genomes.txt -o strepto-GENOMES.db
+anvi-gen-genomes-storage -e entero_anvi_genomes.txt -o entero-GENOMES.db
+anvi-gen-genomes-storage -e lactoc_anvi_genomes.txt -o lactoc-GENOMES.db
+anvi-gen-genomes-storage -e lactob_anvi_genomes.txt -o lactob-GENOMES.db
+anvi-gen-genomes-storage -e pedio_anvi_genomes.txt -o pedio-GENOMES.db
+anvi-gen-genomes-storage -e weisel_anvi_genomes.txt -o weisel-GENOMES.db
+
+anvi-migrate-db ./lactoc/*.fna.db
+
+anvi-migrate-db ./weis/*.fna.db
+anvi-migrate-db ./pedio/*.fna.db
+anvi-migrate-db ./entero/*.fna.db
+anvi-migrate-db ./strepto/*.fna.db
 
