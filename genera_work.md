@@ -149,14 +149,20 @@ anvi-gen-genomes-storage -e leucono_anvi_genomes.txt -o leucono-GENOMES.db
 
 anvi-gen-genomes-storage -e strepto_anvi_genomes.txt -o strepto-GENOMES.db
 anvi-gen-genomes-storage -e entero_anvi_genomes.txt -o entero-GENOMES.db
-anvi-gen-genomes-storage -e lactoc_anvi_genomes.txt -o lactoc-GENOMES.db
 anvi-gen-genomes-storage -e lactob_anvi_genomes.txt -o lactob-GENOMES.db
+
 
 anvi-gen-genomes-storage -e pedio_anvi_genomes.txt -o pedio-GENOMES.db
 #The new genomes storage ......................: pedio-GENOMES.db (v6, signature: hash872f0d0f)
 #Number of genomes ............................: 40 (internal: 0, external: 40)
 #Number of gene calls .........................: 81,888
 #Number of partial gene calls .................: 1,301
+
+anvi-gen-genomes-storage -e lactoc_anvi_genomes.txt -o lactoc-GENOMES.db
+#The new genomes storage ......................: lactoc-GENOMES.db (v6, signature: hash121c8e5b)
+#Number of genomes ............................: 106 (internal: 0, external: 106)
+#Number of gene calls .........................: 267,059
+#Number of partial gene calls .................: 9,301
 
 anvi-gen-genomes-storage -e weisel_anvi_genomes.txt -o weisel-GENOMES.db
 #The new genomes storage ......................: weisel-GENOMES.db (v6, signature: hash1c29efbe)
