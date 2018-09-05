@@ -208,13 +208,13 @@ anvi-pan-genome -g strepto-GENOMES.db -o strepto -n strepto --enforce-hierarchic
 
 ## View analysis
 ```
-anvi-display-pan -g leucono-GENOMES.db -p leucono/leuono-PAN.db
-anvi-display-pan -g weisel-GENOMES.db -p weisel/weisel-PAN.db
-anvi-display-pan -g pedio-GENOMES.db -p pedio/pedio-PAN.db
-anvi-display-pan -g lactoc-GENOMES.db -p lactoc/lactoc-PAN.db
-anvi-display-pan -g lactob-GENOMES.db -p lactob/lactob-PAN.db
-anvi-display-pan -g entero-GENOMES.db -p entero/entero-PAN.db
-anvi-display-pan -g strepto-GENOMES.db -p strepto/strepto-PAN.db
+anvi-display-pan -g leucono-GENOMES.db -p pan_genomes/leucono/leuono-PAN.db
+anvi-display-pan -g weisel-GENOMES.db -p pan_genomes/weisel/weisel-PAN.db
+anvi-display-pan -g pedio-GENOMES.db -p pan_genomes/pedio/pedio-PAN.db
+anvi-display-pan -g lactoc-GENOMES.db -p pan_genomes/lactoc/lactoc-PAN.db
+anvi-display-pan -g lactob-GENOMES.db -p pan_genomes/lactob/lactob-PAN.db
+anvi-display-pan -g entero-GENOMES.db -p pan_genomes/entero/entero-PAN.db
+anvi-display-pan -g strepto-GENOMES.db -p pan_genomes/strepto/strepto-PAN.db
 ```
 
 ## Get ribosomal protein sequence
