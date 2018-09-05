@@ -187,4 +187,32 @@ anvi-gen-genomes-storage -e weisel_anvi_genomes.txt -o weisel-GENOMES.db
 #Number of partial gene calls .................: 1,294
 ```
 
+## Pangenomes
+```
+#pangenome analysis
+anvi-pan-genome -g leucono-GENOMES.db -o leucono -n leuono --enforce-hierarchical-clustering -T 4 --exclude-partial-gene-calls
 
+anvi-pan-genome -g weisel-GENOMES.db -o weisel -n weisel --enforce-hierarchical-clustering -T 4 --exclude-partial-gene-calls
+
+anvi-pan-genome -g pedio-GENOMES.db -o pedio -n pedio --enforce-hierarchical-clustering -T 4 --exclude-partial-gene-calls
+
+anvi-pan-genome -g lactoc-GENOMES.db -o lactoc -n lactoc --enforce-hierarchical-clustering -T 4 --exclude-partial-gene-calls
+
+anvi-pan-genome -g lactob-GENOMES.db -o lactob -n lactob --enforce-hierarchical-clustering -T 4 --exclude-partial-gene-calls
+
+anvi-pan-genome -g entero-GENOMES.db -o entero -n entero --enforce-hierarchical-clustering -T 4 --exclude-partial-gene-calls
+
+anvi-pan-genome -g strepto-GENOMES.db -o strepto -n strepto --enforce-hierarchical-clustering -T 4 --exclude-partial-gene-calls
+```
+
+
+## view analysis
+```
+anvi-display-pan -g leucono-GENOMES.db -p leucono/leuono-PAN.db
+anvi-display-pan -g weisel-GENOMES.db -p weisel/weisel-PAN.db
+anvi-display-pan -g pedio-GENOMES.db -p pedio/pedio-PAN.db
+anvi-display-pan -g lactoc-GENOMES.db -p lactoc/lactoc-PAN.db
+anvi-display-pan -g lactob-GENOMES.db -p lactob/lactob-PAN.db
+anvi-display-pan -g entero-GENOMES.db -p entero/entero-PAN.db
+anvi-display-pan -g strepto-GENOMES.db -p strepto/strepto-PAN.db
+```
