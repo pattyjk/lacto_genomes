@@ -206,7 +206,7 @@ anvi-pan-genome -g strepto-GENOMES.db -o strepto -n strepto --enforce-hierarchic
 ```
 
 
-## view analysis
+## View analysis
 ```
 anvi-display-pan -g leucono-GENOMES.db -p leucono/leuono-PAN.db
 anvi-display-pan -g weisel-GENOMES.db -p weisel/weisel-PAN.db
@@ -215,4 +215,45 @@ anvi-display-pan -g lactoc-GENOMES.db -p lactoc/lactoc-PAN.db
 anvi-display-pan -g lactob-GENOMES.db -p lactob/lactob-PAN.db
 anvi-display-pan -g entero-GENOMES.db -p entero/entero-PAN.db
 anvi-display-pan -g strepto-GENOMES.db -p strepto/strepto-PAN.db
+```
+
+## Get ribosomal protein sequence
+```
+anvi-get-sequences-for-hmm-hits --external-genomes pedio_anvi_genomes.txt -o pedio_cat_ribo_proteins.fa --return-best-hit --hmm-source Rinke_et_al --get-aa-sequence --concatenate --gene-names Ribosomal_L1,Ribosomal_L10,Ribosomal_L11,Ribosomal_L11_N,Ribosomal_L13,Ribosomal_L14,Ribosomal_L15e,Ribosomal_L16,Ribosomal_L18p,Ribosomal_L19e,Ribosomal_L2,Ribosomal_L21e,Ribosomal_L22,Ribosomal_L23,Ribosomal_L24e,Ribosomal_L29,Ribosomal_L2_C,Ribosomal_L3,Ribosomal_L30,Ribosomal_L31e,Ribosomal_L32e,Ribosomal_L37ae,Ribosomal_L37e,Ribosomal_L39,Ribosomal_L4,Ribosomal_L44,Ribosomal_L5,Ribosomal_L5_C,Ribosomal_L6,Ribosomal_S11,Ribosomal_S13,Ribosomal_S13_N,Ribosomal_S14,Ribosomal_S15,Ribosomal_S17,Ribosomal_S17e,Ribosomal_S19,Ribosomal_S19e,Ribosomal_S2,Ribosomal_S24e,Ribosomal_S27,Ribosomal_S27e,Ribosomal_S28e,Ribosomal_S3Ae,Ribosomal_S3_C,Ribosomal_S4e,Ribosomal_S5,Ribosomal_S5_C,Ribosomal_S6e,Ribosomal_S7,Ribosomal_S8,Ribosomal_S8e,Ribosomal_S9
+
+anvi-get-sequences-for-hmm-hits --external-genomes weisel_anvi_genomes.txt -o weisel_cat_ribo_proteins.fa --return-best-hit --hmm-source Rinke_et_al --get-aa-sequence --concatenate --gene-names Ribosomal_L1,Ribosomal_L10,Ribosomal_L11,Ribosomal_L11_N,Ribosomal_L13,Ribosomal_L14,Ribosomal_L15e,Ribosomal_L16,Ribosomal_L18p,Ribosomal_L19e,Ribosomal_L2,Ribosomal_L21e,Ribosomal_L22,Ribosomal_L23,Ribosomal_L24e,Ribosomal_L29,Ribosomal_L2_C,Ribosomal_L3,Ribosomal_L30,Ribosomal_L31e,Ribosomal_L32e,Ribosomal_L37ae,Ribosomal_L37e,Ribosomal_L39,Ribosomal_L4,Ribosomal_L44,Ribosomal_L5,Ribosomal_L5_C,Ribosomal_L6,Ribosomal_S11,Ribosomal_S13,Ribosomal_S13_N,Ribosomal_S14,Ribosomal_S15,Ribosomal_S17,Ribosomal_S17e,Ribosomal_S19,Ribosomal_S19e,Ribosomal_S2,Ribosomal_S24e,Ribosomal_S27,Ribosomal_S27e,Ribosomal_S28e,Ribosomal_S3Ae,Ribosomal_S3_C,Ribosomal_S4e,Ribosomal_S5,Ribosomal_S5_C,Ribosomal_S6e,Ribosomal_S7,Ribosomal_S8,Ribosomal_S8e,Ribosomal_S9
+
+anvi-get-sequences-for-hmm-hits --external-genomes leucono_anvi_genomes.txt -o leucono_cat_ribo_proteins.fa --return-best-hit --hmm-source Rinke_et_al --get-aa-sequence --concatenate --gene-names Ribosomal_L1,Ribosomal_L10,Ribosomal_L11,Ribosomal_L11_N,Ribosomal_L13,Ribosomal_L14,Ribosomal_L15e,Ribosomal_L16,Ribosomal_L18p,Ribosomal_L19e,Ribosomal_L2,Ribosomal_L21e,Ribosomal_L22,Ribosomal_L23,Ribosomal_L24e,Ribosomal_L29,Ribosomal_L2_C,Ribosomal_L3,Ribosomal_L30,Ribosomal_L31e,Ribosomal_L32e,Ribosomal_L37ae,Ribosomal_L37e,Ribosomal_L39,Ribosomal_L4,Ribosomal_L44,Ribosomal_L5,Ribosomal_L5_C,Ribosomal_L6,Ribosomal_S11,Ribosomal_S13,Ribosomal_S13_N,Ribosomal_S14,Ribosomal_S15,Ribosomal_S17,Ribosomal_S17e,Ribosomal_S19,Ribosomal_S19e,Ribosomal_S2,Ribosomal_S24e,Ribosomal_S27,Ribosomal_S27e,Ribosomal_S28e,Ribosomal_S3Ae,Ribosomal_S3_C,Ribosomal_S4e,Ribosomal_S5,Ribosomal_S5_C,Ribosomal_S6e,Ribosomal_S7,Ribosomal_S8,Ribosomal_S8e,Ribosomal_S9
+
+anvi-get-sequences-for-hmm-hits --external-genomes lactoc_anvi_genomes.txt -o lactoc_cat_ribo_proteins.fa --return-best-hit --hmm-source Rinke_et_al --get-aa-sequence --concatenate --gene-names Ribosomal_L1,Ribosomal_L10,Ribosomal_L11,Ribosomal_L11_N,Ribosomal_L13,Ribosomal_L14,Ribosomal_L15e,Ribosomal_L16,Ribosomal_L18p,Ribosomal_L19e,Ribosomal_L2,Ribosomal_L21e,Ribosomal_L22,Ribosomal_L23,Ribosomal_L24e,Ribosomal_L29,Ribosomal_L2_C,Ribosomal_L3,Ribosomal_L30,Ribosomal_L31e,Ribosomal_L32e,Ribosomal_L37ae,Ribosomal_L37e,Ribosomal_L39,Ribosomal_L4,Ribosomal_L44,Ribosomal_L5,Ribosomal_L5_C,Ribosomal_L6,Ribosomal_S11,Ribosomal_S13,Ribosomal_S13_N,Ribosomal_S14,Ribosomal_S15,Ribosomal_S17,Ribosomal_S17e,Ribosomal_S19,Ribosomal_S19e,Ribosomal_S2,Ribosomal_S24e,Ribosomal_S27,Ribosomal_S27e,Ribosomal_S28e,Ribosomal_S3Ae,Ribosomal_S3_C,Ribosomal_S4e,Ribosomal_S5,Ribosomal_S5_C,Ribosomal_S6e,Ribosomal_S7,Ribosomal_S8,Ribosomal_S8e,Ribosomal_S9
+
+###
+anvi-get-sequences-for-hmm-hits --external-genomes lactob_anvi_genomes.txt -o lactob_cat_ribo_proteins.fa --return-best-hit --hmm-source Rinke_et_al --get-aa-sequence --concatenate --gene-names Ribosomal_L1,Ribosomal_L10,Ribosomal_L11,Ribosomal_L11_N,Ribosomal_L13,Ribosomal_L14,Ribosomal_L15e,Ribosomal_L16,Ribosomal_L18p,Ribosomal_L19e,Ribosomal_L2,Ribosomal_L21e,Ribosomal_L22,Ribosomal_L23,Ribosomal_L24e,Ribosomal_L29,Ribosomal_L2_C,Ribosomal_L3,Ribosomal_L30,Ribosomal_L31e,Ribosomal_L32e,Ribosomal_L37ae,Ribosomal_L37e,Ribosomal_L39,Ribosomal_L4,Ribosomal_L44,Ribosomal_L5,Ribosomal_L5_C,Ribosomal_L6,Ribosomal_S11,Ribosomal_S13,Ribosomal_S13_N,Ribosomal_S14,Ribosomal_S15,Ribosomal_S17,Ribosomal_S17e,Ribosomal_S19,Ribosomal_S19e,Ribosomal_S2,Ribosomal_S24e,Ribosomal_S27,Ribosomal_S27e,Ribosomal_S28e,Ribosomal_S3Ae,Ribosomal_S3_C,Ribosomal_S4e,Ribosomal_S5,Ribosomal_S5_C,Ribosomal_S6e,Ribosomal_S7,Ribosomal_S8,Ribosomal_S8e,Ribosomal_S9
+###
+
+anvi-get-sequences-for-hmm-hits --external-genomes entero_anvi_genomes.txt -o entero_cat_ribo_proteins.fa --return-best-hit --hmm-source Rinke_et_al --get-aa-sequence --concatenate --gene-names Ribosomal_L1,Ribosomal_L10,Ribosomal_L11,Ribosomal_L11_N,Ribosomal_L13,Ribosomal_L14,Ribosomal_L15e,Ribosomal_L16,Ribosomal_L18p,Ribosomal_L19e,Ribosomal_L2,Ribosomal_L21e,Ribosomal_L22,Ribosomal_L23,Ribosomal_L24e,Ribosomal_L29,Ribosomal_L2_C,Ribosomal_L3,Ribosomal_L30,Ribosomal_L31e,Ribosomal_L32e,Ribosomal_L37ae,Ribosomal_L37e,Ribosomal_L39,Ribosomal_L4,Ribosomal_L44,Ribosomal_L5,Ribosomal_L5_C,Ribosomal_L6,Ribosomal_S11,Ribosomal_S13,Ribosomal_S13_N,Ribosomal_S14,Ribosomal_S15,Ribosomal_S17,Ribosomal_S17e,Ribosomal_S19,Ribosomal_S19e,Ribosomal_S2,Ribosomal_S24e,Ribosomal_S27,Ribosomal_S27e,Ribosomal_S28e,Ribosomal_S3Ae,Ribosomal_S3_C,Ribosomal_S4e,Ribosomal_S5,Ribosomal_S5_C,Ribosomal_S6e,Ribosomal_S7,Ribosomal_S8,Ribosomal_S8e,Ribosomal_S9
+
+anvi-get-sequences-for-hmm-hits --external-genomes strepto_anvi_genomes.txt -o strepto_cat_ribo_proteins.fa --return-best-hit --hmm-source Rinke_et_al --get-aa-sequence --concatenate --gene-names Ribosomal_L1,Ribosomal_L10,Ribosomal_L11,Ribosomal_L11_N,Ribosomal_L13,Ribosomal_L14,Ribosomal_L15e,Ribosomal_L16,Ribosomal_L18p,Ribosomal_L19e,Ribosomal_L2,Ribosomal_L21e,Ribosomal_L22,Ribosomal_L23,Ribosomal_L24e,Ribosomal_L29,Ribosomal_L2_C,Ribosomal_L3,Ribosomal_L30,Ribosomal_L31e,Ribosomal_L32e,Ribosomal_L37ae,Ribosomal_L37e,Ribosomal_L39,Ribosomal_L4,Ribosomal_L44,Ribosomal_L5,Ribosomal_L5_C,Ribosomal_L6,Ribosomal_S11,Ribosomal_S13,Ribosomal_S13_N,Ribosomal_S14,Ribosomal_S15,Ribosomal_S17,Ribosomal_S17e,Ribosomal_S19,Ribosomal_S19e,Ribosomal_S2,Ribosomal_S24e,Ribosomal_S27,Ribosomal_S27e,Ribosomal_S28e,Ribosomal_S3Ae,Ribosomal_S3_C,Ribosomal_S4e,Ribosomal_S5,Ribosomal_S5_C,Ribosomal_S6e,Ribosomal_S7,Ribosomal_S8,Ribosomal_S8e,Ribosomal_S9
+```
+
+## Make tree based on ribosomal proteins
+```
+anvi-gen-phylogenomic-tree -f pedio_cat_ribo_proteins.fa -o pedio_tree.tree
+anvi-gen-phylogenomic-tree -f leucono_cat_ribo_proteins.fa -o leucono_tree.tree
+anvi-gen-phylogenomic-tree -f weisel_cat_ribo_proteins.fa -o weisel_tree.tree
+anvi-gen-phylogenomic-tree -f lactoc_cat_ribo_proteins.fa -o lactoc_tree.tree
+anvi-gen-phylogenomic-tree -f lactob_cat_ribo_proteins.fa -o lactob_tree.tree
+anvi-gen-phylogenomic-tree -f strepto_cat_ribo_proteins.fa -o strepto_tree.tree
+anvi-gen-phylogenomic-tree -f entero_cat_ribo_proteins.fa -o entero_tree.tree
+```
+
+## Calculate ANI
+```
+anvi-compute-ani -o weisel_ANI -e weisel_anvi_genomes.txt -T 4 -p /home/pattyjk/Desktop/weisel/weisel-PAN.db
+anvi-compute-ani -o pedio_ANI -e pedio_anvi_genomes.txt -T 4 -p /home/pattyjk/Desktop/pedio/pedio-PAN.db
+anvi-compute-ani -o leucono_ANI -e leucono_anvi_genomes.txt -T 4 -p /home/pattyjk/Desktop/leucono/leucono-PAN.db
+anvi-compute-ani -o lactoc_ANI -e lactoc_anvi_genomes.txt -T 4 -p /home/pattyjk/Desktop/lactoc/lactoc-PAN.db
+anvi-compute-ani -o lactob_ANI -e lactob_anvi_genomes.txt -T 4 -p /home/pattyjk/Desktop/lactob/lactob-PAN.db
+anvi-compute-ani -o entero_ANI -e entero_anvi_genomes.txt -T 4 -p /home/pattyjk/Desktop/entero/entero-PAN.db
+anvi-compute-ani -o strepto_ANI -e strepto_anvi_genomes.txt -T 4 -p /home/pattyjk/Desktop/strepto/strepto-PAN.db
 ```
