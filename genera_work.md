@@ -148,8 +148,24 @@ anvi-gen-genomes-storage -e leucono_anvi_genomes.txt -o leucono-GENOMES.db
 #Number of partial gene calls .................: 223
 
 anvi-gen-genomes-storage -e strepto_anvi_genomes.txt -o strepto-GENOMES.db
+#The new genomes storage ......................: strepto-GENOMES.db (v6, signature: hash629fcf5b)
+#Number of genomes ............................: 2,765 (internal: 0, external: 2,765)
+#Number of gene calls .........................: 5,642,043
+#Number of partial gene calls .................: 138,123
+
 anvi-gen-genomes-storage -e entero_anvi_genomes.txt -o entero-GENOMES.db
+#The new genomes storage ......................: entero-GENOMES.db (v6, signature: hashcea9c0fc)
+#Number of genomes ............................: 820 (internal: 0, external: 820)
+#Number of gene calls .........................: 2,443,525
+#Number of partial gene calls .................: 62,671
+
+
+
 anvi-gen-genomes-storage -e lactob_anvi_genomes.txt -o lactob-GENOMES.db
+#The new genomes storage ......................: lactob-GENOMES.db (v6, signature: hash91d51c68)
+#Number of genomes ............................: 759 (internal: 0, external: 759)
+#Number of gene calls .........................: 1,870,319
+#Number of partial gene calls .................: 71,373
 
 
 anvi-gen-genomes-storage -e pedio_anvi_genomes.txt -o pedio-GENOMES.db
