@@ -67,7 +67,7 @@ R
 library(plyr)
 
 #list files of interest
-paths <- dir(pattern = "\\.csv$")
+bsg <- dir(pattern = "\\.csv$")
 
 #add file names to list of files
 names(bsg) <- basename(bsg)
