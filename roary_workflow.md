@@ -43,3 +43,35 @@ mkdir roary_out
 
 /home/pattyjk/anaconda3/pkgs/roary-3.7.0-0/bin/roary-create_pan_genome_plots.R
 ```
+
+## Extract 16S copy no, genome size, CDS, contigs, tRNA from prokka annotation
+```
+mkdir genome_info
+cd fixed_fasta/prokka_out
+
+#copy the files of interest
+find -type f -name "*.txt" -exec cp {} /media/pattyjk/Elements/lactobacilliales_genomes/genome_info \;
+
+#remove colon
+for i in *.txt
+do
+sed -i 's/\://g' $i
+done
+
+#process in arrr
+library(plyr)
+gen_names<-list.files(".", pattern="*.txt", full.names=T)
+names(gen_names)<-basename(gen_names)
+gen<-ldply(gen_names, read.delim
+
+#split column into meaningful values
+library(tidyr)
+gen_split<-separate(gen, organism.Genus.species.strain, sep=" ", into=c("type", "value"))
+names(gen_split)<-c("genome_name", "type", "value")
+
+#fix first column
+gen_split$genome_name<-gsub("prokka_", "", gen_split$genome_name)
+gen_split$genome_name<-gsub(".fna.txt", "", gen_split$genome_name)
+```
+
+
