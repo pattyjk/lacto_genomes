@@ -101,7 +101,7 @@ bsg_cat<-rbind(dbsg, no_bsg)
 #install.package("dplyr")
 library(dplyr)
 
-bsg_sum<-ddply(bsg_cat, c("genome_name", "bsg"), summarize, n=length(bsg))
+bsg_sum<-ddply(bsg_cat, c("genome_name", "bsg"), summarize, n=length(bsg), .drop=F)
 
 #write to files
 write.table(bsg_cat, "lacto_bsg.txt",  sep="\t", row.names=F, quote=F)
