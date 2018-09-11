@@ -44,3 +44,41 @@ for filename in *.txt; do
     mv "$filename" "${filename//.fna000001/}"
 done
 ```
+
+## Catenate files
+```
+#make list of empty files 
+find ./ -empty > no_bsg.txt
+
+#ount number of genomes with no BSG
+grep -c '.txt' no_bsg.txt 
+#803
+
+#remove blank files
+find ./ -empty -delete
+
+#move list of blank files to general lactob folder
+mv no_bsg.txt /media/pattyjk/Elements/lactobacilliales_genomes/
+
+#catenate the files in arrr
+R
+
+#install.package("plyr")
+library(plyr)
+
+#list files of interest
+paths <- dir(pattern = "\\.csv$")
+
+#add file names to list of files
+names(bsg) <- basename(bsg)
+
+#read in the data and catenate
+dbsg <- ldply(bsg, read.table)
+
+#change names
+names(dbsg)<-c("genome_name", "entry1", "entry2", "bsg", "loc1", "loc2")
+
+#fix genome names
+dbsg$genome_name<-gsub("txt", "", dbsg$genome_name)
+dbsg$genome_name<-gsub("[[:punct:]]", "", dbsg$genome_name)
+
