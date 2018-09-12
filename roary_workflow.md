@@ -86,6 +86,8 @@ mkdir weis_gff
 cd strepto
 find -type f -name "*.gff" -exec cp {} /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/strepto_gff \;
 cd ..
+
+
 cd entero
 find -type f -name "*.gff" -exec cp {} /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/entero_gff \;
 cd ..
@@ -101,7 +103,6 @@ cd ..
 cd leucono
 find -type f -name "*.gff" -exec cp {} /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/leucono_gff \;
 cd ..
-
 cd weis
 find -type f -name "*.gff" -exec cp {} /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/weis_gff \;
 cd ..
