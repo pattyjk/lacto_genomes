@@ -49,6 +49,70 @@ mkdir roary_out
 /home/pattyjk/anaconda3/pkgs/roary-3.7.0-0/bin/roary-create_pan_genome_plots.R
 ```
 
+## Calculate genus level pangenome
+```
+#put each prokka annotation in genus folder
+mkdir entero
+mkdir strepto
+mkdir lactob
+mkdir pedio
+mkdir lactoc
+mkdir leucono
+mkdir weis
+
+cd /media/pattyjk/Elements/lactobacilliales_genomes/prokka_out
+
+#move prokka folders
+xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/entero_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/entero/
+xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/strepto_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/strepto/
+xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/lactobac_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/lactob/
+xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/pedio_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/pedio/
+
+
+xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/lactococc_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/lactoc/
+xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/leucono_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/leucono/
+xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/weisel_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/weis/
+
+cd  /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/
+
+#make gff folders
+mkdir entero_gff
+mkdir strepto_gff
+mkdir lactob_gff
+mkdir pedio_gff
+mkdir lactoc_gff
+mkdir leucono_gff
+mkdir weis_gff
+
+#move gff files
+cd strepto
+find -type f -name "*.gff" -exec cp {} /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/strepto_gff \;
+cd ..
+cd entero
+find -type f -name "*.gff" -exec cp {} /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/entero_gff \;
+cd ..
+cd pedio
+find -type f -name "*.gff" -exec cp {} /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/pedio_gff \;
+cd ..
+cd lactob
+find -type f -name "*.gff" -exec cp {} /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/lactob_gff \;
+cd ..
+cd lactoc
+find -type f -name "*.gff" -exec cp {} /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/lactoc_gff \;
+cd ..
+cd leucono
+find -type f -name "*.gff" -exec cp {} /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/leucono_gff \;
+cd ..
+cd weis
+find -type f -name "*.gff" -exec cp {} /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/weis_gff \;
+cd ..
+
+# calculate genus-level pangenomes with roary
+
+
+```
+
+
 ## Extract 16S copy no, genome size, CDS, contigs, tRNA from prokka annotation
 ```
 mkdir genome_info
@@ -117,5 +181,5 @@ ls -R1 ./media/pattyjk/Elements/lactobacilliales_genomes/fixed_fasta |    while 
 cd /media/pattyjk/Elements/lactobacilliales_genomes/
 sed -i 's/\.//\//g' lactobacillilales_genomes.txt
 
-/home/pattyjk/FastANI/fastANI -t 4 -o ANI_out -q lactobacillilales_genomes.txt -r lactobacillilales_genomes.txt
+/home/pattyjk/FastANI/fastANI -t 4 -o ANI_out --queryList lactobacillilales_genomes.txt --refList lactobacillilales_genomes.txt
 ```
