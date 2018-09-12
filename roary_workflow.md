@@ -2,7 +2,9 @@
 ## Annotate genomes with Prokka
 ```
 #conda install -c conda-forge -c bioconda prokka
-#export PERL5LIB=/home/pattyjk/anaconda3/lib/perl5/site_perl/5.22.0
+
+#make sure the computer can find perl
+export PERL5LIB=/home/pattyjk/anaconda3/lib/perl5/site_perl/5.22.0
 
 #fix fasta file headers
 cd fixed_fasta
@@ -28,8 +30,11 @@ done
 ## Calculate pangenome with Roary
 ```
 #conda install -c bioconda roary 
-#export PERL5LIB=/home/pattyjk/anaconda3/lib/perl5/site_perl/5.22.0
-/home/pattyjk/anaconda3/pkgs/roary-3.7.0-0/bin/roary
+
+#make sure the computer can find perl
+export PERL5LIB=/home/pattyjk/anaconda3/lib/perl5/site_perl/5.22.0
+
+#roary is located at: /home/pattyjk/anaconda3/pkgs/roary-3.7.0-0/bin/roary
 
 #find and move all .gff files
 mkdir gff_files
@@ -92,3 +97,17 @@ gen_split2<-split(gen_split, gen_split$type)
 #biocLite("KEGGREST")
 library(KEGGREST)
 
+```
+
+
+## Calculate ANI with FastANI
+```
+#sudo apt-get install libgsl-dev
+#cd ~
+#git clone https://github.com/ParBLiSS/FastANI.git
+#cd FastANI
+#./bootstrap.sh
+#./configure
+
+/home/pattyjk/FastANI/fastANI -t 4 -o ANI_out -q lactobacillilales.txt -r lactobacillilales.txt
+```
