@@ -27,7 +27,7 @@ prokka $i --kingdom Bacteria --cpus 4 --outdir prokka_out/prokka_$i --prefix pro
 done
 ```
 
-## Calculate pangenome with Roary
+## Calculate order-level pangenome with Roary
 ```
 #conda install -c bioconda roary 
 
@@ -64,10 +64,7 @@ cd /media/pattyjk/Elements/lactobacilliales_genomes/prokka_out
 
 #move prokka folders
 xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/entero_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/entero/
-
-
 xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/strepto_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/strepto/
-
 xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/lactobac_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/lactob/
 xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/pedio_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/pedio/
 xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/lactococc_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/lactoc/
@@ -110,6 +107,42 @@ find -type f -name "*.gff" -exec cp {} /media/pattyjk/Elements/lactobacilliales_
 cd ..
 
 # calculate genus-level pangenomes with roary
+export PERL5LIB=/home/pattyjk/anaconda3/lib/perl5/site_perl/5.22.0
+
+cd weis_gff
+mkdir roary_out
+/home/pattyjk/anaconda3/pkgs/roary-3.7.0-0/bin/roary *.gff -o roary_out
+cd ..
+
+cd lactoc_gff
+mkdir roary_out
+/home/pattyjk/anaconda3/pkgs/roary-3.7.0-0/bin/roary *.gff -o roary_out
+cd ..
+
+cd entero_gff
+mkdir roary_out
+/home/pattyjk/anaconda3/pkgs/roary-3.7.0-0/bin/roary *.gff -o roary_out
+cd ..
+
+cd strepto_gff
+mkdir roary_out
+/home/pattyjk/anaconda3/pkgs/roary-3.7.0-0/bin/roary *.gff -o roary_out
+cd ..
+
+cd leucono_gff
+mkdir roary_out
+/home/pattyjk/anaconda3/pkgs/roary-3.7.0-0/bin/roary *.gff -o roary_out
+cd ..
+
+cd pedio_gff
+mkdir roary_out
+/home/pattyjk/anaconda3/pkgs/roary-3.7.0-0/bin/roary *.gff -o roary_out
+cd ..
+
+cd lactob_gff
+mkdir roary_out
+/home/pattyjk/anaconda3/pkgs/roary-3.7.0-0/bin/roary *.gff -o roary_out
+cd ..
 ```
 
 ## Family level pangenomes
