@@ -109,5 +109,11 @@ library(KEGGREST)
 #./bootstrap.sh
 #./configure
 
-/home/pattyjk/FastANI/fastANI -t 4 -o ANI_out -q lactobacillilales.txt -r lactobacillilales.txt
+#make list of genomes to calculate ANI on
+cd /
+
+ls -R1 ./media/pattyjk/Elements/lactobacilliales_genomes/fixed_fasta |    while read l; do case $l in *:) d=${l%:};; "") d=;; *) echo "$d/$l";; esac; done > /media/pattyjk/Elements/lactobacilliales_genomes/lactobacillilales_genomes.txt
+
+
+/home/pattyjk/FastANI/fastANI -t 4 -o ANI_out -q lactobacillilales_genomes.txt -r lactobacillilales_genomes.txt
 ```
