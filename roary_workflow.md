@@ -81,6 +81,14 @@ gen_split$genome_name<-gsub(".fna.txt", "", gen_split$genome_name)
 
 #write data to file
 write.csv(gen_split, "genome_info.csv", row.names=F, quote=F)
+
+#split data by type
+gen_split2<-split(gen_split, gen_split$type)
 ```
 
+## Make prokka annotations into KEGG
+```
+#source("https://bioconductor.org/biocLite.R")
+#biocLite("KEGGREST")
+library(KEGGREST)
 
