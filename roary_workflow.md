@@ -28,7 +28,7 @@ done
 ## Calculate pangenome with Roary
 ```
 #conda install -c bioconda roary 
-
+#export PERL5LIB=/home/pattyjk/anaconda3/lib/perl5/site_perl/5.22.0
 /home/pattyjk/anaconda3/pkgs/roary-3.7.0-0/bin/roary
 
 #find and move all .gff files
@@ -52,6 +52,11 @@ cd fixed_fasta/prokka_out
 #copy the files of interest
 find -type f -name "*.txt" -exec cp {} /media/pattyjk/Elements/lactobacilliales_genomes/genome_info \;
 
+#change directories
+cd ..
+cd ..
+cd genome_info
+
 #remove colon
 for i in *.txt
 do
@@ -59,10 +64,11 @@ sed -i 's/\://g' $i
 done
 
 #process in arrr
+R
 library(plyr)
 gen_names<-list.files(".", pattern="*.txt", full.names=T)
 names(gen_names)<-basename(gen_names)
-gen<-ldply(gen_names, read.delim
+gen<-ldply(gen_names, read.delim)
 
 #split column into meaningful values
 library(tidyr)
@@ -72,6 +78,9 @@ names(gen_split)<-c("genome_name", "type", "value")
 #fix first column
 gen_split$genome_name<-gsub("prokka_", "", gen_split$genome_name)
 gen_split$genome_name<-gsub(".fna.txt", "", gen_split$genome_name)
+
+#write data to file
+write.csv(gen_split, "genome_info.csv", row.names=F, quote=F)
 ```
 
 
