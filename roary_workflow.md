@@ -1,4 +1,4 @@
-# Pangenomes with Prokka and Roary
+# Pangenomes with Prokka and Roary and ANI with FastANI
 ## Annotate genomes with Prokka
 ```
 #conda install -c conda-forge -c bioconda prokka
@@ -64,11 +64,12 @@ cd /media/pattyjk/Elements/lactobacilliales_genomes/prokka_out
 
 #move prokka folders
 xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/entero_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/entero/
+
+
 xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/strepto_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/strepto/
+
 xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/lactobac_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/lactob/
 xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/pedio_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/pedio/
-
-
 xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/lactococc_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/lactoc/
 xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/leucono_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/leucono/
 xargs -a /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/weisel_genomes.txt cp -r -t /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/weis/
@@ -103,15 +104,21 @@ cd ..
 cd leucono
 find -type f -name "*.gff" -exec cp {} /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/leucono_gff \;
 cd ..
+
 cd weis
 find -type f -name "*.gff" -exec cp {} /media/pattyjk/Elements/lactobacilliales_genomes/individual_prokka/weis_gff \;
 cd ..
 
 # calculate genus-level pangenomes with roary
-
-
 ```
 
+## Family level pangenomes
+```
+#make family-level genome files
+cat lactobac_genomes.txt pedio_genomes.txt > lactobacillaceae_gen.txt
+cat weisel_genomes.txt leucono_genomes.txt > leuconostocaceae_gen.txt
+cat strepto_genomes.txt lactococc_genomes.txt > streptococcaceae_gen.txt
+```
 
 ## Extract 16S copy no, genome size, CDS, contigs, tRNA from prokka annotation
 ```
