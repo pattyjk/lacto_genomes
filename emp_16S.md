@@ -10,6 +10,6 @@ for i in $(find . -maxdepth 3 -type f -name "*.fq"); do
 done
 
 #convert to fasta file 
-for i in $(find . -maxdepth 3 -type f -name "*.fq"); do
-  fastq_quality_filter -i $i -q 30 -o $i.fna
+for i in $(find . -maxdepth 3 -type f -name "*.fastq"); do
+  fastq_to_fasta -i $i -o $i.fasta
 done
