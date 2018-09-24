@@ -17,7 +17,7 @@ done
 
 #catenate fasta files into one file
 for i in $(find . -maxdepth 3 -type f -name "*.fna"); do
-cat $i > emp_16s.fna
+cat $i > emp_16s.fasta
 done
 
 #pick OTUs aginst Silva with uclust
