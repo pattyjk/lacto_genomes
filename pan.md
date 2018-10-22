@@ -62,6 +62,9 @@ lacto_gen2<- lacto_gen2[-which(lacto_gen2$gene == ""),]
 #create column with '1'
 lacto_gen2$presence<-rep(1, nrow(lacto_gen2))
 
+#remove duplicated genes in genomes
+lacto_gen2<-lacto_gen2[!duplicated(lacto_gen2[c(1,5)]),]
+
 #get genes that are shared accross all genes
 library(plyr)
 gene_sum<-ddply(lacto_gen2,  c("gene"), summarize, n=length(presence))
