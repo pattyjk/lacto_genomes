@@ -142,3 +142,15 @@ anvi-get-sequences-for-hmm-hits -e anvi_gen.txt --gene-names Bacterial_16S_rRNA 
 ```
 anvi-script-add-default-collection -c lacto_GENOMES.db
 ```
+
+## Export gene calls
+```
+#anvi-migrate-db *.db
+
+for i in *.db
+do 
+anvi-export-functions -c $i -o /media/pattyjk/Elements/lactobacilliales_genomes/gene_calls/fun_$i
+done
+```
+
+
