@@ -1,4 +1,5 @@
-#Lactobacillilales Pangenome
+##  Lactobacillilales Pangenome
+``
 setwd("/home/pattyjk/Dropbox/R/lacto_genomes/no_hypo/")
 setwd("/home/pattyjk/Dropbox/R/lacto_genomes/gene_calls/")
 
@@ -92,3 +93,4 @@ lacto_tax$taxon_oid<-as.character(lacto_tax$taxon_oid)
 #merge taxonomy to gene info
 lacto_gen2<-merge(lacto_gen_cog, lacto_tax,by.x='.id', by.y='taxon_oid', all.x=T)
 length(unique(lacto_gen2))
+``
