@@ -1,4 +1,6 @@
 ##  Lactobacillilales Pangenome
+
+### Read in data into a single data frame
 ```
 setwd("/home/pattyjk/Dropbox/R/lacto_genomes/no_hypo/")
 setwd("/home/pattyjk/Dropbox/R/lacto_genomes/gene_calls/")
@@ -21,7 +23,10 @@ setwd("/home/pattyjk/Dropbox/R/lacto_genomes/")
 
 #rename headers
 #names(lacto_gen)<-c("genome", "locus_tag", "ftype", "bp", "gene", "EC", "COG", "product")
+```
 
+### Fix data frame
+```
 #number of genomes in analysis
 length(unique(lacto_gen$genome))
 #4520 genomes
@@ -83,8 +88,10 @@ plot(out2$no_genomes, out2$no_genes)
 
 length(which(gene_sum$n > 4294))
 #451
+```
 
-
+### Map Taxonomy to genes
+```
 #read in taxonomic information
 library(readr)
 lacto_tax<-read.delim("~/Desktop/lacto_genomes.csv", header=T, sep='\t')
@@ -93,4 +100,4 @@ lacto_tax$taxon_oid<-as.character(lacto_tax$taxon_oid)
 #merge taxonomy to gene info
 lacto_gen2<-merge(lacto_gen_cog, lacto_tax,by.x='.id', by.y='taxon_oid', all.x=T)
 length(unique(lacto_gen2))
-``
+```
