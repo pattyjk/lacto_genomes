@@ -28,8 +28,8 @@ setwd("/home/pattyjk/Dropbox/R/lacto_genomes/")
 ### Fix data frame
 ```
 #number of genomes in analysis
-length(unique(lacto_gen$genome))
-#4520 genomes
+length(unique(lacto_gen$.id))
+#4521 genomes
 
 #remove '.tsv' from genomes
 #lacto_gen$genome<-gsub(".tsv", "", lacto_gen$genome)
@@ -47,57 +47,50 @@ lacto_gen_cog<-lacto_gen_split$COG_FUNCTION
 nrow(lacto_gen_cog)
 #8,231,381
 
-test<-lacto_gen
+test<-lacto_gen_cog
 #lacto_gen<-test
 
 #remove extra characters from genes
-lacto_gen$gene<-gsub("_[[:digit:]]+", "", lacto_gen$gene)
+#lacto_gen_cog$gene <-gsub("_[[:digit:]]+", "", lacto_gen$gene)
 
 #remove rows with no genes
-lacto_gen<- lacto_gen[-which(lacto_gen$gene == ""),]
+#lacto_gen<- lacto_gen[-which(lacto_gen$gene == ""),]
 
 #create column with '1'
-lacto_gen$presence<-rep(1, nrow(lacto_gen))
+lacto_gen_cog$presence<-rep(1, nrow(lacto_gen_cog))
 
 #remove duplicated genes in genomes
-lacto_gen<-lacto_gen[!duplicated(lacto_gen[c(1,5)]),]
+#lacto_gen<-lacto_gen[!duplicated(lacto_gen[c(1,5)]),]
 
 #get genes that are shared accross all genes
 library(plyr)
-gene_sum<-ddply(lacto_gen,  c("gene"), summarize, n=length(presence))
-
-#number of genes that could be annotated (minus rRNA and tRNA)
-length(unique(gene_sum$gene))
-#5951 genes
-
-out2<-NA
-for (i in 1:4520){
-  out2[i]<-t(as.data.frame(length(which(gene_sum$n == i))))
-}
-
-out2<-as.data.frame(out2)
-out2$no_genomes<-row.names(out2)
-names(out2)<-c("no_genes", "no_genomes")
-out2$no_genomes<-as.numeric(out2$no_genomes)
-
-plot(out2$no_genomes, out2$no_genes)
-
-#95% of genes
-0.95*4520
-#4294
-
-length(which(gene_sum$n > 4294))
-#451
+gene_sum<-ddply(lacto_gen_cog,  c("accession", ".id"), summarize, n=length(presence))
 ```
 
 ### Map Taxonomy to genes
 ```
 #read in taxonomic information
 library(readr)
-lacto_tax<-read.delim("~/Desktop/lacto_genomes.csv", header=T, sep='\t')
+lacto_tax<-read.delim("lacto_taxo.txt", header=T, sep='\t')
 lacto_tax$taxon_oid<-as.character(lacto_tax$taxon_oid)
 
-#merge taxonomy to gene info
-lacto_gen2<-merge(lacto_gen_cog, lacto_tax,by.x='.id', by.y='taxon_oid', all.x=T)
-length(unique(lacto_gen2))
+#merge taxonomy to gene info to full dataset
+#lacto_gen2<-merge(lacto_gen_cog, lacto_tax, by.x='.id', by.y='taxon_oid', all.x=T)
+#dim(lacto_gen2)
+#8231381  by   113
+
+#merged to summarized dataset
+lacto_gen_sum<-merge(gene_sum, lacto_tax, by.x='.id', by.y='taxon_oid', all.x=T)
+dim(lacto_gen_sum)
+#5430827     109
+
+#split by genus
+lacto_split<-split(lacto_gen_sum, lacto_gen_sum$Genus)
+library(ggplot2)
+
+ggplot(lacto_split$Pediococcus, aes(.id, accession))+
+geom_tile(aes(fill=n))
+
+ggplot(lacto_split$Streptococcus, aes(.id, accession))+
+geom_tile(aes(fill=n))
 ```
