@@ -62,7 +62,7 @@ lacto_gen_cog$presence<-rep(1, nrow(lacto_gen_cog))
 #remove duplicated genes in genomes
 #lacto_gen<-lacto_gen[!duplicated(lacto_gen[c(1,5)]),]
 
-#get genes that are shared accross all genes
+#get genes that are shared accross all taxa
 library(plyr)
 gene_sum<-ddply(lacto_gen_cog,  c("accession", ".id"), summarize, n=length(presence))
 ```
@@ -84,13 +84,26 @@ lacto_gen_sum<-merge(gene_sum, lacto_tax, by.x='.id', by.y='taxon_oid', all.x=T)
 dim(lacto_gen_sum)
 #5430827     109
 
-#split by genus
-lacto_split<-split(lacto_gen_sum, lacto_gen_sum$Genus)
-library(ggplot2)
+#pull out genome, taxonomy, COG accessions, and gene presence
+lacto_gen_sum2<-lacto_gen_sum[,c(1:3)]
 
-ggplot(lacto_split$Pediococcus, aes(.id, accession))+
-geom_tile(aes(fill=n))
+#cast to be genome by COG table
+library(reshape2)
+lacto_gen_sum3<-dcast(lacto_gen_sum2, .id ~ accession)
+dim(lacto_gen_sum3)
+#4521 by 5168
 
-ggplot(lacto_split$Streptococcus, aes(.id, accession))+
-geom_tile(aes(fill=n))
+#change to presence/absence
+row.names(lacto_gen_sum3)<-lacto_gen_sum3[,1]
+lacto_gen_sum3<-lacto_gen_sum3[,-1]
+lacto_gen_sum3[lacto_gen_sum3 > 0] <-1
+lacto_gen_sum3$.id<-row.names(lacto_gen_sum3)
+
+#get column sums
+colsum<-colSums(lacto_gen_sum3[,-5168], na.rm=T)
+colsum<-as.data.frame(colsum)
+colsum$COG<-row.names(colsum)
+
+#heat map
+heatmap(as.matrix(lacto_gen_sum3[,-5168]), na.rm=T, keep.dendro = F)
 ```
