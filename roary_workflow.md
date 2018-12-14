@@ -194,15 +194,6 @@ write.csv(gen_split, "genome_info.csv", row.names=F, quote=F)
 gen_split2<-split(gen_split, gen_split$type)
 ```
 
-## Make prokka annotations into KEGG
-```
-#source("https://bioconductor.org/biocLite.R")
-#biocLite("KEGGREST")
-library(KEGGREST)
-
-```
-
-
 ## Calculate ANI with FastANI
 ```
 #sudo apt-get install libgsl-dev
